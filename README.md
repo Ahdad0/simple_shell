@@ -1,1 +1,2 @@
-# Simple Shell Project
+# Simple Shell Project:
+The Simple Shell project is a minimalistic Unix-like shell that provides a command-line interface for interacting with the operating system. This shell is designed to offer basic command execution and scripting capabilities, making it a lightweight and educational tool for understanding the fundamentals of shell programming.
