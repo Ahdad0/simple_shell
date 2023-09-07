@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-int main(void);
+void prompt_user(void);
+void execute_command(char *cmd);
 
 #endif
