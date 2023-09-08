@@ -44,20 +44,25 @@ void execute_command(char *cmd)
 	}
 	else
 	{
-		perror("./shell");
+		perror(cmd);
 	}
 }
 
 /**
  * main - Entry point for the simple shell program
- *
- * Description: This function implements a basic command-line shell that
- * reads and executes user commands.
+ * @ac: The number of command-line arguments.
+ * @av: An array of command-line argument strings.
  *
  * Return: Always returns EXIT_SUCCESS.
  */
-int main(void)
+int main(int ac, char **av)
 {
+	if (ac != 1)
+	{
+		fprintf(stderr, "Usage: %s\n", av[0]);
+		return (EXIT_FAILURE);
+	}
+
 	char *cmd = NULL;
 	size_t len = 0;
 	ssize_t read;
