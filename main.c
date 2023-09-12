@@ -37,6 +37,7 @@ int main(int ac, char **av, char **env)
 			str = strdup(line);
 			arr = separate(str);
 
+<<<<<<< HEAD
 			if (arr[0] == NULL)  /*continue if there is an empty input*/
 			{
 				free(str);
@@ -51,4 +52,15 @@ int main(int ac, char **av, char **env)
 		free(line);
 	}
 	return (0);
+=======
+                arr = separate(str);
+
+                if (arr[0] == NULL)  /*continue if there is an empty input*/
+                {
+                        continue;
+                }
+
+                execute(arr, av[0], env);
+        }
+>>>>>>> f1de23ceb83a407740cfdff1d333b21484f3360e
 }
