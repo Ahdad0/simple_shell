@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/**
+ * execute - Execute a command with arguments.
+ *
+ * @str: An array of strings representing the command and its arguments.
+ * @av: The name of the program (used for error messages).
+ * @en: The array of environment variables.
+ *
+ * Return: Returns 1 upon successful execution or -1 on failure.
+ */
 int execute(char **str, char *av, char **en)
 {
 	pid_t piid;
@@ -12,7 +21,7 @@ int execute(char **str, char *av, char **en)
 		if (piid == -1)
 		{
 			perror("Fork");
-			exit (EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		if (piid == 0)
 		{
