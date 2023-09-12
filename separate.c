@@ -23,7 +23,13 @@ char **separate(char *string)
                 i++;
         }
 
-        arr[i] = NULL;
+	if (strcmp(arr[0], "ls") == 0)
+	{
+		free(arr[0]);
+		arr[0] = "/bin/ls";
+	}
+
+	arr[i] = NULL;
 
         return (arr);
 }
