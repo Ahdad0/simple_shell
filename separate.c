@@ -25,10 +25,8 @@ char **separate(char *string)
 
 	if (strcmp(arr[0], "ls") == 0)
 	{
-		free(arr[0]);
 		arr[0] = "/bin/ls";
 	}
-
 	arr[i] = NULL;
 
         return (arr);
