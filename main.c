@@ -12,7 +12,6 @@
 int main(int ac, char **av, char **env)
 {
 	char *str, **arr;
-	int i = 0;
 	char *line = NULL;
 	size_t len = 0;
 
@@ -36,8 +35,6 @@ int main(int ac, char **av, char **env)
 			/*str = command_line();*/
 			str = strdup(line);
 			arr = separate(str);
-
-<<<<<<< HEAD
 			if (arr[0] == NULL)  /*continue if there is an empty input*/
 			{
 				free(str);
@@ -52,15 +49,4 @@ int main(int ac, char **av, char **env)
 		free(line);
 	}
 	return (0);
-=======
-                arr = separate(str);
-
-                if (arr[0] == NULL)  /*continue if there is an empty input*/
-                {
-                        continue;
-                }
-
-                execute(arr, av[0], env);
-        }
->>>>>>> f1de23ceb83a407740cfdff1d333b21484f3360e
 }

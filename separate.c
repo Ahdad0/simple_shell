@@ -31,7 +31,6 @@ char **separate(char *string)
 
 	arr = malloc(sizeof(char *) * 32);
 
-<<<<<<< HEAD
 	if (arr == NULL)
 	{
 		perror("malloc");
@@ -47,13 +46,10 @@ char **separate(char *string)
 	}
 	arr[i] = NULL;
 	return (arr);
-=======
 	if (strcmp(arr[0], "ls") == 0)
 	{
 		arr[0] = "/bin/ls";
 	}
 	arr[i] = NULL;
-
-        return (arr);
->>>>>>> f1de23ceb83a407740cfdff1d333b21484f3360e
+	return (arr);
 }
