@@ -8,10 +8,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 char *command_line();
 char **separate(char *string);
 int execute(char **string, char *av, char **en);
 void print_environment(char **env);
+char *_getline(void);
+char **separate1(char *string);
 
 #endif

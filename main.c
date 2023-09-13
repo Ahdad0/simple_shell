@@ -13,12 +13,13 @@ int main(int ac, char **av, char **env)
 {
 	char *str, **arr;
 	char *line = NULL;
-	size_t len = 0;
+	/*size_t len = 0;*/
 
 	while (ac < 2)
 	{
 		printf("$ ");
-		getline(&line, &len, stdin);
+		/*getline(&line, &len, stdin);*/
+		line = _getline();
 		line[strlen(line) - 1] = '\0';
 
 		if (strcmp(line, "exit") == 0)
@@ -34,7 +35,7 @@ int main(int ac, char **av, char **env)
 		{
 			/*str = command_line();*/
 			str = strdup(line);
-			arr = separate(str);
+			arr = separate1(str);
 			if (arr[0] == NULL)  /*continue if there is an empty input*/
 			{
 				free(str);
