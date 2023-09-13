@@ -12,5 +12,6 @@
 char *command_line();
 char **separate(char *string);
 int execute(char **string, char *av, char **en);
+void print_environment(char **env);
 
 #endif
