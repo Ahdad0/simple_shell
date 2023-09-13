@@ -1,21 +1,74 @@
 #include "shell.h"
 
 /**
- * print_environment - Print the environment variables.
+ * compare- compare between 's' and 'c'
  *
- * @env: The array of environment variables to be printed.
+ * @s: string
+ * @c: string
+ *
+ * Return: 0 if they have the same char
+ * and 1 if not
  */
-void print_environment(char **env)
+int compare(char *s, char *c)
 {
-	unsigned int i = 0;
+	int len_s, len_c, i = 0;
 
-	while (env[i] != NULL)
+	len_s = len_str(s);
+	len_c = len_str(c);
+
+	if (len_s == len_c)
 	{
-		printf("%s\n", env[i]);
-		i++;
+		while (len_s >= i)
+		{
+			if (s[i] != c[i])
+			{
+				return (-1);
+			}
+			i++;
+		}
 	}
+	else
+	{
+		return (-1);
+	}
+
+	return (0);
 }
 
+/**
+ * len_str - count the lenght of a string
+ *
+ * @string: string to count
+ *
+ * Return: number of char
+ */
+int len_str(char *string)
+{
+	int len = 0;
+
+	while (string[len] != '\0')
+	{
+		len++;
+	}
+
+	return (len);
+}
+
+/**
+ * str_cpy - copy content of c to str.
+ *
+ * @de: destination that need a copy
+ * @c: the copy
+ */
+void str_cpy(char *de, char *c)
+{
+	while (*c)
+	{
+		*de = *c;
+		de++;
+		c++;
+	}
+}
 /**
  * separate - Split a string into an array of substrings.
  *
@@ -33,23 +86,26 @@ char **separate(char *string)
 
 	if (arr == NULL)
 	{
+		free(string);
 		perror("malloc");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	mv = strtok(string, " \t\n");
 
 	while (mv != NULL)
 	{
-		arr[i] = strdup(mv);
+		arr[i] = malloc(len_str(mv) + 1);
+		str_cpy(arr[i], mv);
 		mv = strtok(NULL, " \t\n");
 		i++;
 	}
-	arr[i] = NULL;
-	return (arr);
-	if (strcmp(arr[0], "ls") == 0)
+
+	if (i > 0 && compare(arr[0], "ls") == 0)
 	{
 		arr[0] = "/bin/ls";
 	}
+
 	arr[i] = NULL;
+
 	return (arr);
 }
