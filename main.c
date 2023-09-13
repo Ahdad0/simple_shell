@@ -12,27 +12,31 @@
 int main(int ac, char **av, char **env)
 {
 	char *str, **arr;
+<<<<<<< HEAD
 	char *line = NULL;
 	/*size_t len = 0;*/
+=======
+>>>>>>> 7239f053f059196593ee86595b2f5bd1e2e41f96
 
-	while (ac < 2)
+	while (1)
 	{
+<<<<<<< HEAD
 		printf("$ ");
 		/*getline(&line, &len, stdin);*/
 		line = _getline();
 		line[strlen(line) - 1] = '\0';
+=======
+		write(STDOUT_FILENO, "$ ", 2);
+		fflush(stdout);
+>>>>>>> 7239f053f059196593ee86595b2f5bd1e2e41f96
 
-		if (strcmp(line, "exit") == 0)
+		str = command_line(env);
+
+		arr = separate(str);
+
+		if (arr[0] == NULL)
 		{
-			free(line);
-			break;
-		}
-		else if (strcmp(line, "env") == 0)
-		{
-			print_environment(env);
-		}
-		else
-		{
+<<<<<<< HEAD
 			/*str = command_line();*/
 			str = strdup(line);
 			arr = separate1(str);
@@ -44,10 +48,18 @@ int main(int ac, char **av, char **env)
 			}
 			execute(arr, av[0], env);
 			/*Free the dynamically allocated memory for str and arr*/
+=======
+>>>>>>> 7239f053f059196593ee86595b2f5bd1e2e41f96
 			free(str);
-			free(arr);
+			continue;
 		}
-		free(line);
+		print_environment(arr, env);
+
+		eexit(arr);
+
+		execute(arr, av[0], env);
+
+		free(str);
 	}
 	return (0);
 }
