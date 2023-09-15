@@ -1,74 +1,31 @@
 #include "shell.h"
 
 /**
- * compare- compare between 's' and 'c'
+ * split - split string
  *
  * @s: string
- * @c: string
  *
- * Return: 0 if they have the same char
- * and 1 if not
+ * Return: number of string
  */
-int compare(char *s, char *c)
+int split(char *s)
 {
-	int len_s, len_c, i = 0;
+	int i, src = 1, cm = 0;
 
-	len_s = len_str(s);
-	len_c = len_str(c);
-
-	if (len_s == len_c)
+	for (i = 0; s[i]; i++)
 	{
-		while (len_s >= i)
+		if (s[i] != ' ' && src == 1)
 		{
-			if (s[i] != c[i])
-			{
-				return (-1);
-			}
-			i++;
+			cm += 1;
+			src = 0;
+		}
+		if (s[i + 1] == ' ')
+		{
+			src = 1;
 		}
 	}
-	else
-	{
-		return (-1);
-	}
-
-	return (0);
+	return (cm);
 }
 
-/**
- * len_str - count the lenght of a string
- *
- * @string: string to count
- *
- * Return: number of char
- */
-int len_str(char *string)
-{
-	int len = 0;
-
-	while (string[len] != '\0')
-	{
-		len++;
-	}
-
-	return (len);
-}
-
-/**
- * str_cpy - copy content of c to str.
- *
- * @de: destination that need a copy
- * @c: the copy
- */
-void str_cpy(char *de, char *c)
-{
-	while (*c)
-	{
-		*de = *c;
-		de++;
-		c++;
-	}
-}
 /**
  * separate - Split a string into an array of substrings.
  *
@@ -78,24 +35,32 @@ void str_cpy(char *de, char *c)
  */
 char **separate(char *string)
 {
-	char *mv;
-	char **arr;
-	int i = 0;
+	char *mv = NULL;
+	char **arr = NULL;
+	int i = 0, j, number = 0;
 
-	arr = malloc(sizeof(char *) * 32);
+	number = split(string);
+
+	if (!number)
+	{
+		free(string);
+		return (NULL);
+	}
+
+	arr = malloc(sizeof(char *) * (number + 1));
 
 	if (arr == NULL)
 	{
 		free(string);
 		perror("malloc");
-		return (NULL);
+		exit(EXIT_FAILURE);
 	}
+
 	mv = strtok(string, " \t\n");
 
 	while (mv != NULL)
 	{
-		arr[i] = malloc(len_str(mv) + 1);
-		str_cpy(arr[i], mv);
+		arr[i] = str_dup(mv);
 		mv = strtok(NULL, " \t\n");
 		i++;
 	}
@@ -107,5 +72,6 @@ char **separate(char *string)
 
 	arr[i] = NULL;
 
+	free(string);
 	return (arr);
 }

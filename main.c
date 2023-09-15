@@ -11,29 +11,33 @@
  */
 int main(int ac, char **av, char **env)
 {
-	char *str, **arr;
+	char *str = NULL, **arr = NULL;
 
 	while (1)
 	{
+
 		write(STDOUT_FILENO, "$ ", 2);
 		fflush(stdout);
 
 		str = command_line(env);
 
 		arr = separate(str);
-
 		if (arr[0] == NULL)
 		{
-			free(str);
+			free_s(arr);
 			continue;
 		}
-		print_environment(arr, env);
+
+		if (print_environment(arr, env) == 1)
+		{
+			continue;
+		}
 
 		eexit(arr);
 
 		execute(arr, av[0], env);
 
-		free(str);
+		free(arr);
 	}
 	return (0);
 }

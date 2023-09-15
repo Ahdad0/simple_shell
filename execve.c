@@ -20,15 +20,17 @@ int execute(char **str, char *av, char **en)
 
 		if (piid == -1)
 		{
-			perror("Fork");
+			free_s(str);
+			perror(av);
 			exit(EXIT_FAILURE);
 		}
 		else if (piid == 0)
 		{
 			if (execve(str[0], str, en) == -1)
 			{
+				free_s(str);
 				perror(av);
-				return (EXIT_FAILURE);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
@@ -41,5 +43,5 @@ int execute(char **str, char *av, char **en)
 		perror(av);
 	}
 
-	return (1);
+	return (0);
 }

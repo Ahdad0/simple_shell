@@ -8,15 +8,19 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 char *command_line(char **env);
 char **separate(char *string);
-int execute(char **string, char *av, char **en);
-void print_environment(char **string, char **env);
+int execute(char **str, char *av, char **en);
+int print_environment(char **string, char **env);
 void free_s(char **string);
-int len_str(char *string);
-int compare(char *s, char *c);
-void str_cpy(char *de, char *c);
+size_t len_str(const char *string);
+int compare(const char *s, const char *c);
+char *str_dup(const char *str);
 void eexit(char **string);
+char *_getline(void);
+char **separate1(char *string);
+int split(char *s);
 
 #endif

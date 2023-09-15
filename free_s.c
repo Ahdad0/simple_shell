@@ -9,7 +9,7 @@ void free_s(char **string)
 {
 	int i;
 
-	for (i = 0; string[i] != NULL; i++)
+	for (i = 0; string[i]; i++)
 	{
 		    free(string[i]);
 	}

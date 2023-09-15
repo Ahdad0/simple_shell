@@ -5,17 +5,19 @@
  *
  * @string: string
  * @env: The array of environment variables to be printed.
+ *
+ * Return: 1
  */
-void print_environment(char **string, char **env)
+int print_environment(char **string, char **env)
 {
 	unsigned int i = 0, len = 0;
 
-	while(string[len] != NULL)
+	while (string[len] != NULL)
 	{
 		len++;
 	}
 
-	if (len == 1 && strcmp(string[0], "env") == 0)
+	if ((len == 1) && strcmp(string[0], "env") == 0)
 	{
 
 		while (env[i] != NULL)
@@ -24,5 +26,7 @@ void print_environment(char **string, char **env)
 			write(STDOUT_FILENO, "\n", 1);
 			i++;
 		}
+		free_s(string);
+		return (1);
 	}
 }

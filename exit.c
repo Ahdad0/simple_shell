@@ -7,15 +7,16 @@
  */
 void eexit(char **string)
 {
-	unsigned int i = 0, len = 0;
+	unsigned int len = 0;
 
-	while(string[len] != NULL)
+	while (string[len] != NULL)
 	{
 		len++;
 	}
 
-	if (len == 1 && compare(string[0], "exit") == 0)
+	if ((len == 1) && (compare(string[0], "exit") == 0))
 	{
-		exit(EXIT_FAILURE);
+		free_s(string);
+		exit(0);
 	}
 }

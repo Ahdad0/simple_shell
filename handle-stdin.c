@@ -3,6 +3,8 @@
 /**
  * command_line - Read a line of input from the user.
  *
+ * @env: environment
+ *
  * Return: A dynamically allocated string containing the user's input.
  *
  * This string should be freed when no longer needed.
@@ -18,8 +20,9 @@ char *command_line(char **env)
 	if (re == -1)
 	{
 		free(li);
-		write(STDOUT_FILENO, "\n", 1);
-		exit(EXIT_FAILURE);
+		if (isatty(STDIN_FILENO) != 0)
+			write(STDOUT_FILENO, "\n", 1);
+		exit(0);
 	}
 
 	return (li);
