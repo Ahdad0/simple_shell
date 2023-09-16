@@ -20,8 +20,7 @@ char *command_line()
 	if (re == -1)
 	{
 		free(li);
-		if (isatty(STDIN_FILENO) != 0)
-			write(STDOUT_FILENO, "\n", 1);
+		write(STDOUT_FILENO, "\n", 1);
 		exit(1);
 	}
 

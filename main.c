@@ -16,7 +16,7 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		printf("$ ");
+		write(STDOUT_FILENO, "$ ", 2);
 
 		str = command_line();
 
