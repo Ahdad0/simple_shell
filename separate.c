@@ -1,6 +1,29 @@
 #include "shell.h"
 
 /**
+ * free_str - free array of string from separate
+ * function
+ *
+ * @string: original str
+ * @arr: array
+ * @i: number that specify when malloc fail
+ *
+ */
+void free_str(char *string, char **arr, int i)
+{
+	int j;
+
+	for (j = 0; j < i; j++)
+	{
+		free(arr[j]);
+	}
+	free(arr);
+	free(string);
+	perror("malloc");
+	exit(1);
+}
+
+/**
  * split - split string
  *
  * @s: string
@@ -35,43 +58,40 @@ int split(char *s)
  */
 char **separate(char *string)
 {
-	char *mv = NULL;
-	char **arr = NULL;
+	char **arr = NULL, *mv = NULL;
 	int i = 0, j, number = 0;
 
 	number = split(string);
-
-	if (!number)
-	{
-		free(string);
-		return (NULL);
-	}
-
 	arr = malloc(sizeof(char *) * (number + 1));
-
 	if (arr == NULL)
 	{
 		free(string);
 		perror("malloc");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
-
 	mv = strtok(string, " \t\n");
-
 	while (mv != NULL)
 	{
-		arr[i] = str_dup(mv);
+		if (compare(mv, "ls") == 0)
+		{
+			arr[i] = str_dup("/bin/ls");
+			if (arr[i] == NULL)
+			{
+				free_str(string, arr, i);
+			}
+		}
+		else
+		{
+			arr[i] = str_dup(mv);
+			if (arr[i] == NULL)
+			{
+				free_str(string, arr, i);
+			}
+		}
 		mv = strtok(NULL, " \t\n");
 		i++;
 	}
-
-	if (i > 0 && compare(arr[0], "ls") == 0)
-	{
-		arr[0] = "/bin/ls";
-	}
-
 	arr[i] = NULL;
-
 	free(string);
 	return (arr);
 }

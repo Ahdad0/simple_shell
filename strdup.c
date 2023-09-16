@@ -9,8 +9,8 @@
  */
 char *str_dup(const char *src)
 {
-	size_t len, i;
-	char *s;
+	size_t len = 0, i;
+	char *s = NULL;
 
 	if (src == NULL)
 	{

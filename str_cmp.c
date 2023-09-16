@@ -11,7 +11,7 @@
  */
 int compare(const char *s, const char *c)
 {
-	while (*s || *c)
+	while (*s && *c)
 	{
 		if (*s != *c)
 		{
