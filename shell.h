@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+void promp();
 char *command_line();
 char **separate(char *string);
 int execute(char **str, char *av, char **en);

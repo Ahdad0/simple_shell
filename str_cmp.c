@@ -11,14 +11,15 @@
  */
 int compare(const char *s, const char *c)
 {
-	while (*s && *c)
+	int i = 0;
+
+	while (s[i] && c[i])
 	{
-		if (*s != *c)
+		if (s[i] != c[i])
 		{
-			return (*s - *c);
+			return (s[i] - c[i]);
 		}
-		*s++;
-		*c++;
+		i++;
 	}
 
 	return (0);

@@ -12,11 +12,10 @@
 int main(int ac, char **av, char **env)
 {
 	char *str = NULL, **arr = NULL;
-	int i = 0;
 
-	while (1)
+	while (ac < 2)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		promp();
 
 		str = command_line();
 
@@ -36,5 +35,5 @@ int main(int ac, char **av, char **env)
 		execute(arr, av[0], env);
 
 	}
-	return (0);
+	return (1);
 }

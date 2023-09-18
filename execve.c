@@ -12,7 +12,7 @@
 int execute(char **str, char *av, char **en)
 {
 	pid_t piid;
-	int statu, i;
+	int statu;
 
 	if (access(str[0], X_OK) == 0)
 	{
@@ -29,7 +29,7 @@ int execute(char **str, char *av, char **en)
 			if (execve(str[0], str, en) == -1)
 			{
 				free_s(str);
-				perror(av);
+				perror(str[0]);
 				exit(1);
 			}
 		}
@@ -42,7 +42,6 @@ int execute(char **str, char *av, char **en)
 	{
 		perror(str[0]);
 	}
-
 	free_s(str);
 
 	return (0);

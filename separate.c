@@ -59,7 +59,7 @@ int split(char *s)
 char **separate(char *string)
 {
 	char **arr = NULL, *mv = NULL;
-	int i = 0, j, number = 0;
+	int i = 0, number = 0;
 
 	number = split(string);
 	arr = malloc(sizeof(char *) * (number + 1));

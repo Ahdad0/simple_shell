@@ -20,9 +20,13 @@ char *command_line()
 	if (re == -1)
 	{
 		free(li);
-		write(STDOUT_FILENO, "\n", 1);
-		exit(1);
+		if (isatty(STDIN_FILENO) != 0)
+		{
+			write(STDOUT_FILENO, "\n", 1);
+		}
+		exit(0);
 	}
+
 
 	return (li);
 }
