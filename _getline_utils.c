@@ -1,5 +1,11 @@
-#include "_getline.h"
+#include "shell.h"
 
+/**
+ * ft_strlen - Calculate the length of a string.
+ * @s: The input string.
+ *
+ * Return: The length of the string 's'.
+ */
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
@@ -10,6 +16,12 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
+/**
+ * ft_strdup - Duplicate a string.
+ * @src: The source string to duplicate.
+ *
+ * Return: A newly allocated copy of the 'src' string.
+ */
 char	*ft_strdup(char *src)
 {
 	char	*dest;
@@ -27,7 +39,13 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
+/**
+ * ft_strjoin - Concatenate two strings.
+ * @s1: The first string.
+ * @s2: The second string.
+ *
+ * Return: A newly allocated string containing the concatenated 's1' and 's2'.
+ */
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	size;
@@ -57,6 +75,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (s3);
 }
 
+/**
+ * ft_substr - Extract a substring from a string.
+ * @s: The input string.
+ * @start: The starting index of the substring.
+ * @len: The length of the substring.
+ *
+ * Return: Allocated substring of 's' starting from 'start' with length 'len'.
+ */
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*new_str;
@@ -83,8 +109,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (new_str);
 }
 
+/**
+ * ft_free - Free memory allocated for a string and set it to NULL.
+ * @str: A pointer to a string.
+ */
 void	ft_free(char **str)
-{	
+{
 	free(*str);
 	*str = NULL;
 }

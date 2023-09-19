@@ -1,8 +1,15 @@
-#include "_getline.h"
+#include "shell.h"
 
-int	ft_strchr(char *str, char c)
+/**
+ * ft_strchr - Find a character in a string.
+ * @str: The input string.
+ * @c: The character to find.
+ *
+ * Return: 1 if 'c' is found in 'str', 0 otherwise.
+ */
+int ft_strchr(char *str, char c)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])
@@ -14,6 +21,13 @@ int	ft_strchr(char *str, char c)
 	return (0);
 }
 
+/**
+ * copy_substr - Copy a substring from a string.
+ * @str: The input string.
+ * @size: The size of the substring to copy.
+ *
+ * Return: A newly allocated string containing the copied substring.
+ */
 char	*copy_substr(char *str, size_t size)
 {
 	size_t	i;
@@ -30,18 +44,27 @@ char	*copy_substr(char *str, size_t size)
 	return (tmp);
 }
 
+/**
+ * reader - Read data from a file descriptor into a buffer.
+ * @str: A pointer to the buffer where data is stored and concatenated.
+ * @buf: A pointer to the temporary buffer for reading data.
+ * @fd: The file descriptor to read from.
+ *
+ * This function reads data from 'fd' into 'buf', concatenates it with 'str',
+ * and updates 'str' with the concatenated data.
+ */
 void	reader(char **str, char **buf, int fd)
 {
-	int		return_read;
-	char	*r;
+	int rtn_read;
+	char *r;
 
-	return_read = 1;
-	while (return_read > 0)
+	rtn_read = 1;
+	while (rtn_read > 0)
 	{
-		return_read = read(fd, *buf, BUFFER_SIZE);
-		if (return_read > 0)
+		rtn_read = read(fd, *buf, BUFFER_SIZE);
+		if (rtn_read > 0)
 		{
-			(*buf)[return_read] = '\0';
+			(*buf)[rtn_read] = '\0';
 			if (!*str)
 				*str = ft_strdup(*buf);
 			else
@@ -51,12 +74,18 @@ void	reader(char **str, char **buf, int fd)
 				*str = r;
 			}
 			if (ft_strchr(*str, '\n') == 1)
-				break ;
+				break;
 		}
 	}
 	ft_free(buf);
 }
 
+/**
+ * _getline - Custom getline function to read lines from a file descriptor.
+ * @fd: The file descriptor to read from.
+ *
+ * Return: A line read from 'fd' or NULL if an error occurs.
+ */
 char	*_getline(int fd)
 {
 	static char	*str;
