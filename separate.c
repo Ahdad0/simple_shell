@@ -63,30 +63,22 @@ char **separate(char *string)
 
 	number = split(string);
 	arr = malloc(sizeof(char *) * (number + 1));
+
 	if (arr == NULL)
 	{
 		free(string);
 		perror("malloc");
 		exit(1);
 	}
+
 	mv = strtok(string, " \t\n");
+
 	while (mv != NULL)
 	{
-		if (compare(mv, "ls") == 0)
+		arr[i] = str_dup(mv);
+		if (arr[i] == NULL)
 		{
-			arr[i] = str_dup("/bin/ls");
-			if (arr[i] == NULL)
-			{
-				free_str(string, arr, i);
-			}
-		}
-		else
-		{
-			arr[i] = str_dup(mv);
-			if (arr[i] == NULL)
-			{
-				free_str(string, arr, i);
-			}
+			free_str(string, arr, i);
 		}
 		mv = strtok(NULL, " \t\n");
 		i++;

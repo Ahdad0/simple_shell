@@ -39,7 +39,7 @@ int check(char **string, char **env)
 			free(string[i]);
 		}
 		free(string);
-		exit(0);
+		exit(2);
 	}
 	return (0);
 }

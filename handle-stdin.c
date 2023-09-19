@@ -27,6 +27,5 @@ char *command_line()
 		exit(0);
 	}
 
-
 	return (li);
 }

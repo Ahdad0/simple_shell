@@ -5,13 +5,14 @@
  *
  * @ac: The number of command-line arguments.
  * @av: An array of strings representing the command-line arguments.
- * @env: An array of strings representing the environment variables.
+ * @env: An array of strings representing the environment variable
  *
  * Return: Always returns 0.
  */
 int main(int ac, char **av, char **env)
 {
 	char *str = NULL, **arr = NULL;
+	char *re = NULL;
 
 	while (ac < 2)
 	{
@@ -27,13 +28,14 @@ int main(int ac, char **av, char **env)
 
 		arr = separate(str);
 
+		re = handle_path(arr);
+
 		if (check(arr, env) == 1)
 		{
 			continue;
 		}
 
-		execute(arr, av[0], env);
-
+		execute(arr, av[0], env, re);
 	}
-	return (1);
+	return (0);
 }
