@@ -15,7 +15,7 @@
 void promp(void);
 char *command_line();
 char **separate(char *string);
-int execute(char **str, char *av, char **en, char *f);
+int execute(char **str, char *av, char **en);
 int check(char **string, char **env);
 size_t len_str(const char *string);
 int compare(const char *s, const char *c);

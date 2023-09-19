@@ -12,7 +12,6 @@
 int main(int ac, char **av, char **env)
 {
 	char *str = NULL, **arr = NULL;
-	char *re = NULL;
 
 	while (ac < 2)
 	{
@@ -28,14 +27,12 @@ int main(int ac, char **av, char **env)
 
 		arr = separate(str);
 
-		re = handle_path(arr);
-
 		if (check(arr, env) == 1)
 		{
 			continue;
 		}
 
-		execute(arr, av[0], env, re);
+		execute(arr, av[0], env);
 	}
 	return (0);
 }
