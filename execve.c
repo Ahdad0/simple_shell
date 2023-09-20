@@ -6,13 +6,14 @@
  * @str: An array of strings representing the command and its arguments.
  * @av: The name of the program (used for error messages).
  * @en: The array of environment variables.
+ * @d: path
  *
  * Return: Returns 1 upon successful execution or -1 on failure.
  */
 int execute(char **str, char *av, char **en, char *d)
 {
 	pid_t piid;
-	int statu;
+	int statu, ex = 0;
 	static int num = 1;
 	char opposite[100];
 
@@ -28,6 +29,7 @@ int execute(char **str, char *av, char **en, char *d)
 		}
 		else if (piid == 0)
 		{
+			ex = 0;
 			if (execve(d, str, en) == -1)
 			{
 				free_s(str);
@@ -44,11 +46,12 @@ int execute(char **str, char *av, char **en, char *d)
 	{
 		convert_num_to_string(num, opposite);
 		_print_error(av, str[0], opposite);
+		ex = 127;
 		num++;
 	}
 	free_s(str);
 
-	return (0);
+	return (ex);
 }
 
 /**

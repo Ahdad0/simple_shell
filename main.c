@@ -37,5 +37,6 @@ int main(int ac, char **av, char **env)
 
 		ex = execute(arr, av[0], env, re);
 	}
+
 	return (0);
 }

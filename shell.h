@@ -13,7 +13,7 @@
 #define BUFFER_SIZE 1
 
 void promp(void);
-char *command_line();
+char *command_line(int ex);
 char **separate(char *string);
 void convert_num_to_string(int num, char *opposite);
 int execute(char **str, char *av, char **en, char *d);
