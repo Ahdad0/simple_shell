@@ -15,7 +15,8 @@
 void promp(void);
 char *command_line();
 char **separate(char *string);
-int execute(char **str, char *av, char **en);
+void convert_num_to_string(int num, char *opposite);
+int execute(char **str, char *av, char **en, char *d);
 int check(char **string, char **env);
 size_t len_str(const char *string);
 int compare(const char *s, const char *c);
@@ -30,4 +31,7 @@ void conv_str(int num, char *str);
 char *handle_path(char *PATH, char **str);
 int _atoi(char *s);
 int _exitt(char **argv);
+void _print_error(char *av, char *str, char *opposite);
+char *path(char **str);
+
 #endif
