@@ -5,6 +5,7 @@
  *
  * @string: string
  * @env: environment
+ * @ex: status code
  *
  * Return: 1 if env match or 0 if not
  */
