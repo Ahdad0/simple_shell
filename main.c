@@ -12,12 +12,12 @@
 int main(int ac, char **av, char **env)
 {
 	char *str = NULL, **arr = NULL, *re = NULL;
-	static int ex = -1;
+	static int ex;
 
 	while (ac < 2)
 	{
 		promp();
-
+		
 		str = command_line(ex);
 
 		if (no_line(str) == 1)
@@ -30,7 +30,7 @@ int main(int ac, char **av, char **env)
 
 		re = path(arr);
 
-		if (check(arr, env, ex) == 1)
+		if (check(arr, env) == 1)
 		{
 			continue;
 		}
