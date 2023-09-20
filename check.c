@@ -32,7 +32,7 @@ int check(char **string, char **env)
 		free(string);
 		return (1);
 	}
-	else if ((len == 1) && (strcmp(string[0], "exit") == 0))
+	else if ((strcmp(string[0], "exit") == 0))
 	{
 		for (i = 0; string[i]; i++)
 		{
