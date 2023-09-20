@@ -17,7 +17,7 @@ char *command_line(int ex);
 char **separate(char *string);
 void convert_num_to_string(int num, char *opposite);
 int execute(char **str, char *av, char **en, char *d);
-int check(char **string, char **env);
+int check(char **string, char **env, int ex);
 size_t len_str(const char *string);
 int compare(const char *s, const char *c);
 char *str_dup(const char *str);

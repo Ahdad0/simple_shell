@@ -26,6 +26,8 @@ char *command_line(int ex)
 		{
 			write(STDOUT_FILENO, "\n", 1);
 		}
+		if (ex == -1)
+			ex = 0;
 		exit(ex);
 	}
 
