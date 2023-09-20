@@ -39,6 +39,7 @@ int check(char **string, char **env)
 			free(string[i]);
 		}
 		free(string);
+		write(1, "exit\n", strlen("exit\n"));
 		exit(2);
 	}
 	return (0);

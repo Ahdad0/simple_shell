@@ -24,7 +24,7 @@ char *command_line()
 		{
 			write(STDOUT_FILENO, "\n", 1);
 		}
-		exit(1);
+		exit(0);
 	}
 
 	return (li);
