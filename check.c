@@ -34,12 +34,11 @@ int check(char **string, char **env)
 	}
 	else if ((strcmp(string[0], "exit") == 0))
 	{
-		for (i = 0; string[i]; i++)
-		{
-			free(string[i]);
-		}
-		free(string);
-		write(1, "exit\n", strlen("exit\n"));
+		//for (i = 0; string[i]; i++)
+		//{
+		//	free(string[i]);
+		//}
+		//free(string);
 		exit(0);
 	}
 	return (0);
