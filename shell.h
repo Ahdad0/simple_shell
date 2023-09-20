@@ -28,5 +28,6 @@ void free_s(char **string);
 void free_str(char *string, char **arr, int i);
 void conv_str(int num, char *str);
 char *handle_path(char *PATH, char **str);
-
+int _atoi(char *s);
+int _exitt(char **argv);
 #endif
