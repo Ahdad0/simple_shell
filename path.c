@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 #include "shell.h"
 
 /**
@@ -85,16 +84,11 @@ int str_check(char *str, char d)
 char *path(char **str)
 {
 	char *PATH = NULL, *tok = NULL, *cpy = NULL;
-	char *path = NULL, *q = NULL, *kep = "ls";
+	char *path = NULL, *q = NULL;
 	static char arr[100];
 	int passed = 0;
 
 	struct stat S;
-
-	if (stat(str[0], &S) != 0 && str_check(str[0], '/') == 1)
-	{
-		return (kep);
-	}
 
 	PATH = getenv("PATH");
 	q = str_dup(PATH);
@@ -123,15 +117,3 @@ char *path(char **str)
 
 	return (path);
 }
-=======
-#include "shell.h"
-
-char *path(char **str)
-{
-	char *PATH = NULL, *cpy = NULL;
-
-	PATH = getenv("PATH");
-	
-	cpy = strdup(PATH);
-}
->>>>>>> Stashed changes
