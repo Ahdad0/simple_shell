@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include "shell.h"
 
 /**
@@ -122,3 +123,15 @@ char *path(char **str)
 
 	return (path);
 }
+=======
+#include "shell.h"
+
+char *path(char **str)
+{
+	char *PATH = NULL, *cpy = NULL;
+
+	PATH = getenv("PATH");
+	
+	cpy = strdup(PATH);
+}
+>>>>>>> Stashed changes
