@@ -57,6 +57,24 @@ char *added(char *arr, char **arg, char *tok)
 }
 
 /**
+ * str_check - check for '/' in first char
+ *
+ * @str: string
+ * @d: deli
+ *
+ * Return: 0 or 1
+ */
+int str_check(char *str, char d)
+{
+	if (str[0] == d)
+	{
+		return (1);
+	}
+	else
+		return (0);
+}
+
+/**
  * path - handle path
  *
  * @str: string
@@ -66,11 +84,16 @@ char *added(char *arr, char **arg, char *tok)
 char *path(char **str)
 {
 	char *PATH = NULL, *tok = NULL, *cpy = NULL;
-	char *path = NULL, *q = NULL;
+	char *path = NULL, *q = NULL, *kep = "ls";
 	static char arr[100];
 	int passed = 0;
 
 	struct stat S;
+
+	if (stat(str[0], &S) != 0 && str_check(str[0], '/') == 1)
+	{
+		return (kep);
+	}
 
 	PATH = getenv("PATH");
 	q = str_dup(PATH);

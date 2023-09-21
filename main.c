@@ -30,7 +30,7 @@ int main(int ac, char **av, char **env)
 
 		re = path(arr);
 
-		if (check(arr, env) == 1)
+		if (check(arr, env, ex) == 1)
 		{
 			continue;
 		}

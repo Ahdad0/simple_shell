@@ -24,7 +24,7 @@ int execute(char **str, char *av, char **en, char *d)
 		if (piid == -1)
 		{
 			free_s(str);
-			perror(av);
+			perror("fork");
 			exit(1);
 		}
 		else if (piid == 0)
@@ -33,7 +33,7 @@ int execute(char **str, char *av, char **en, char *d)
 			if (execve(d, str, en) == -1)
 			{
 				free_s(str);
-				perror(str[0]);
+				perror("malloc");
 				exit(127);
 			}
 		}
@@ -42,15 +42,15 @@ int execute(char **str, char *av, char **en, char *d)
 			waitpid(piid, &statu, WUNTRACED);
 		}
 	}
-	else
+	else if (access(d, X_OK) != 0)
 	{
 		convert_num_to_string(num, opposite);
 		_print_error(av, str[0], opposite);
 		ex = 127;
 		num++;
 	}
+	ex = 2;
 	free_s(str);
-
 	return (ex);
 }
 
